@@ -18,7 +18,7 @@ npm run preview
 
 ## Deploy
 
-Push `main` to GitHub, import the repo in Vercel (Astro defaults). Free `*.vercel.app` URL first; when `barnesai.ai` is attached, update `site` in `astro.config.mjs`.
+Push `main` to GitHub, import the repo in Vercel (Astro defaults). Live at https://barnes-ai.vercel.app; when `barnesai.ai` is attached, update `site` in `astro.config.mjs`.
 
 ## Later
 

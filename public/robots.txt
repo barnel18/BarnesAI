@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://barnesincai.vercel.app/sitemap-index.xml
+Sitemap: https://barnes-ai.vercel.app/sitemap-index.xml
