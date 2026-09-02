@@ -1,0 +1,27 @@
+---
+import { site } from "../content/site";
+const h = site.hero;
+---
+<section id="top" class="hero">
+  <div class="container">
+    <p class="label" data-reveal>{h.eyebrow}</p>
+    <h1 data-reveal>{h.headline}</h1>
+    <p class="positioning prose" data-reveal>{h.positioning}</p>
+    <p class="audience prose muted" data-reveal>{h.audience}</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-primary" href={h.primaryCta.href}>{h.primaryCta.label}</a>
+      <a class="btn btn-ghost" href={h.secondaryCta.href} target="_blank" rel="noopener">{h.secondaryCta.label} ↗</a>
+    </div>
+    <p class="method" data-reveal><span class="label">Method</span> {h.method}</p>
+  </div>
+</section>
+
+<style>
+  .hero { padding-block: var(--section); position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: -20% -10% auto auto; width: 40rem; height: 40rem; background: radial-gradient(closest-side, var(--accent-glow), transparent 70%); pointer-events: none; }
+  .hero > .container { position: relative; display: grid; gap: var(--s-6); }
+  h1 { max-width: 16ch; }
+  .positioning { font-size: var(--fs-body); }
+  .ctas { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+  .method { display: grid; gap: var(--s-2); padding: var(--s-4); border: 1px dashed var(--border); border-radius: var(--radius); max-width: var(--prose); }
+</style>

@@ -1,0 +1,26 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { site } from "../content/site";
+const s = site.signup;
+---
+<section id="signup" class="section">
+  <div class="container">
+    <SectionHeading number="03" label="Follow along" title={s.heading} />
+    <p class="prose muted" data-reveal>{s.blurb}</p>
+
+    {s.beehiivEmbedHtml ? (
+      <div class="embed" data-reveal set:html={s.beehiivEmbedHtml} />
+    ) : (
+      <div class="card placeholder" data-reveal>
+        <span class="label">Signup opening soon</span>
+        <p>The list isn't live yet. Until it is, email me and I'll add you by hand.</p>
+        <a class="btn btn-primary" href={`mailto:${s.fallbackEmail}?subject=Add%20me%20to%20the%20list`}>Email {s.fallbackEmail}</a>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .embed, .placeholder { margin-top: var(--s-6); max-width: var(--prose); }
+  .placeholder { display: grid; gap: var(--s-3); justify-items: start; }
+</style>

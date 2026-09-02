@@ -1,0 +1,29 @@
+---
+import { site } from "../content/site";
+---
+<header class="header">
+  <div class="container header-inner">
+    <a class="wordmark" href="#top" aria-label="Barnes Inc. home">
+      <span class="mark" aria-hidden="true">B</span>
+      <span>Barnes Inc.</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        {site.nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); padding-block: var(--s-3); }
+  .wordmark { display: inline-flex; align-items: center; gap: var(--s-2); font-family: var(--font-heading); font-weight: 700; text-decoration: none; letter-spacing: -0.01em; }
+  .mark { display: grid; place-items: center; width: 1.75rem; height: 1.75rem; border-radius: var(--radius); background: var(--accent); color: var(--on-accent); font-weight: 800; font-size: 1rem; }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; gap: var(--s-4); }
+  nav a { font-size: var(--fs-sm); color: var(--muted); text-decoration: none; }
+  nav a:hover { color: var(--text); }
+  @media (max-width: 480px) { ul { gap: var(--s-3); } nav a { font-size: 0.8rem; } }
+</style>

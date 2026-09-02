@@ -1,0 +1,39 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { site } from "../content/site";
+const v = site.videos;
+---
+<section id="videos" class="section">
+  <div class="container">
+    <SectionHeading number="02" label="Videos" title="Every project, documented" />
+
+    {v.videoIds.length > 0 ? (
+      <div class="grid-2" data-reveal>
+        {v.videoIds.map((id) => (
+          <div class="frame">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${id}`}
+              title="YouTube video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="card empty" data-reveal>
+        <span class="label">Up next</span>
+        <h3>{v.emptyState.title}</h3>
+        <p class="muted">{v.emptyState.blurb}</p>
+        <a class="btn btn-ghost" href={v.channelUrl} target="_blank" rel="noopener">{v.emptyState.ctaLabel} ↗</a>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .frame { aspect-ratio: 16 / 9; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  iframe { width: 100%; height: 100%; border: 0; }
+  .empty { display: grid; gap: var(--s-3); justify-items: start; max-width: var(--prose); background: repeating-linear-gradient(135deg, var(--surface) 0 12px, var(--surface-2) 12px 13px); }
+</style>

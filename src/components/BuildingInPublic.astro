@@ -1,0 +1,56 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { site } from "../content/site";
+const p = site.project;
+---
+<section id="project" class="section">
+  <div class="container">
+    <SectionHeading number="01" label="Building in public" title={p.title} />
+
+    <p class="status" data-reveal>
+      <span class="dot" aria-hidden="true"></span>
+      <span class="label">{p.status.label} · {p.status.date}</span>
+      <span class="status-text">{p.status.text}</span>
+    </p>
+
+    <div class="story prose" data-reveal>
+      {p.story.map((para) => <p>{para}</p>)}
+    </div>
+
+    <h3 class="sub" data-reveal>What she actually named</h3>
+    <div class="grid-2" data-reveal>
+      {p.problems.map((pr) => (
+        <div class="card card-accent">
+          <h3 class="problem">{pr.name}</h3>
+          <p class="muted">{pr.detail}</p>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="sub" data-reveal>What I learned</h3>
+    <ol class="lessons prose" data-reveal>
+      {p.lessons.map((l) => <li>{l}</li>)}
+    </ol>
+
+    <p class="next card" data-reveal>
+      <span class="label">Next step</span>
+      <span>{p.nextStep}</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .status { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); margin-bottom: var(--s-8); }
+  .dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent-glow); }
+  .status-text { color: var(--muted); font-size: var(--fs-sm); }
+  .story { margin-bottom: var(--s-8); }
+  .sub { margin: var(--s-8) 0 var(--s-4); font-size: var(--fs-h3); }
+  .problem { font-size: 1.125rem; margin-bottom: var(--s-3); }
+  .lessons { margin: 0; padding-left: 1.25rem; display: grid; gap: var(--s-3); }
+  .lessons li::marker { color: var(--accent); font-family: var(--font-mono); }
+  .next { display: grid; gap: var(--s-2); margin-top: var(--s-8); border-color: var(--accent); }
+  @media (prefers-reduced-motion: no-preference) {
+    .dot { animation: pulse 2s var(--ease) infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,106,26,.5); } 70% { box-shadow: 0 0 0 10px rgba(255,106,26,0); } 100% { box-shadow: 0 0 0 0 rgba(255,106,26,0); } }
+  }
+</style>

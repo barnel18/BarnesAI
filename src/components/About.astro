@@ -1,0 +1,13 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { site } from "../content/site";
+const a = site.about;
+---
+<section id="about" class="section">
+  <div class="container">
+    <SectionHeading number="04" label="Who" title={a.heading} />
+    <div class="prose" data-reveal>
+      {a.paragraphs.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+</section>
