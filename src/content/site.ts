@@ -10,13 +10,14 @@ export const site = {
   meta: {
     title: "Barnes Inc.",
     description:
-      "AI-driven proof of better margins for small business owners in Madison and Milwaukee — built in public, one project at a time.",
+      "AI consulting that improves small-business margins in Madison and Milwaukee, and the whole thing documented in public — the builds, the client calls, the misses — so you can learn to do it yourself.",
     ogImage: "/og.png",
   },
 
   nav: [
     { label: "Story", href: "#project" },
     { label: "Projects", href: "#projects" },
+    { label: "Roadmap", href: "#roadmap" },
     { label: "Videos", href: "#videos" },
     { label: "About", href: "#about" },
     { label: "Follow", href: "#signup" },
@@ -27,6 +28,8 @@ export const site = {
     headline: "Proof that AI can give small businesses the margins they need.",
     positioning:
       "Barnes Inc. gives small business owners AI-driven proof of better margins — sharper marketing that turns into more leads and smarter spend, and automation that cuts the labor cost of redundant manual work like scheduling. Every project becomes a documented case study, so the proof compounds as the work goes.",
+    content:
+      "The other half of this: I document all of it — the builds, the client calls, the parts that don't work — on YouTube and here, so other people can learn to do this themselves.",
     audience:
       "I work with local, owner-run service businesses that run on scheduling and appointments — dog daycares, dental offices, electricians, the trades.",
     method:
@@ -39,13 +42,13 @@ export const site = {
     status: {
       label: "Live project",
       date: "September 2026",
-      text: "In progress — going back to the owner with one direct question.",
+      text: "In progress — next: the labor question, then SEO.",
     },
     title: "Project 01: my mom's dog daycare",
     story: [
       "My first client is my mom. She owns a Dogtopia location in Milwaukee. I did the work free, on purpose: I wanted a real result on a real business before I asked anyone to pay for one.",
-      "I built a tool that pulls a business's marketing, competitor, and staffing data into a full growth audit, and rendered her a report. Then I showed it to her.",
-      "Her honest reaction: most of it she already knew. Owners live inside their business. Telling them what's going on isn't the value. Fixing the specific thing they already named is.",
+      "I built a tool that pulls a business's marketing, competitor, and staffing data into a growth audit, rendered her a 16-page report, and delivered it.",
+      "Her take: useful in parts, but a lot of it she already knew. Fair — owners live inside their business. What actually moved things forward was asking her directly what she wanted to change. She named it in two sentences.",
     ],
     problems: [
       {
@@ -111,6 +114,18 @@ export const site = {
     ],
   },
 
+  roadmap: {
+    heading: "Where this is going",
+    blurb: "Not the whole plan. Enough to hold me to it.",
+    items: [
+      { state: "done", when: "Aug 2026", title: "Started Barnes Inc.", detail: "Built the audit pipeline. Delivered the first report to client #1 — free, on purpose." },
+      { state: "done", when: "Sep 2026", title: "Went public", detail: "This site, the accounts, the first video scripted." },
+      { state: "now", when: "Now", title: "Client #1, for real", detail: "Find the actual constraint behind the labor number, then point the SEO tools at her site. Show the before and after." },
+      { state: "next", when: "Fall 2026", title: "Client #2 and the first videos", detail: "Next client from a short list of local service businesses I already know. Publish the first videos and keep a buffer so posting stays consistent." },
+      { state: "later", when: "2027", title: "Teach it", detail: "A course and a community — once there are enough real results to teach from. Not before." },
+    ],
+  },
+
   videos: {
     channelUrl: YOUTUBE,
     // Add 11-character YouTube video IDs here, newest first. Empty = shows the placeholder.
@@ -135,9 +150,9 @@ export const site = {
   about: {
     heading: "About",
     paragraphs: [
-      "Barnes is my last name, and it's been my nickname for as long as I can remember — most people call me that, not Lucas. No family story behind it. It's just mine, and I'm proud of it.",
-      "I'm a senior at UW-Madison. I don't have years of consulting experience, and I'm not going to pretend I do. What I have is a belief that AI is the shift — that the people who get good at it early are the ones who'll succeed — and that it's worth being excellent at while it's still early.",
-      "So I'm building the track record in the open: real businesses, real numbers, and the parts that don't go well included.",
+      "I'm Lucas Barnes — Barnes to most people. Senior at UW–Madison studying biology, from Pewaukee, Wisconsin. I spent four summers on a concrete crew and ended up leading it. That's where I learned to show up and get the day's work done.",
+      "In August 2026 I started building with Claude Code from zero coding background. Two weeks later I had a working audit pipeline and a first client. I got into AI because I think it's the shift, and I'd rather get good at it now than watch it happen.",
+      "Barnes Inc. is two things: consulting that improves a small business's margins with the least AI necessary, and the record of that work — videos, write-ups, this site — for people who want to learn to do it themselves. I don't have a long track record yet. That's what the record is for.",
     ],
   },
 

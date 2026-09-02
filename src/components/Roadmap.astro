@@ -1,0 +1,43 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { site } from "../content/site";
+const r = site.roadmap;
+---
+<section id="roadmap" class="section">
+  <div class="container">
+    <SectionHeading number="03" label="Roadmap" title={r.heading} />
+    <p class="prose muted intro" data-reveal>{r.blurb}</p>
+
+    <ol class="timeline" data-reveal>
+      {r.items.map((it) => (
+        <li class:list={["item", it.state]}>
+          <span class="marker" aria-hidden="true"></span>
+          <div class="body">
+            <span class="label when">{it.when}</span>
+            <h3>{it.title}</h3>
+            <p class="muted">{it.detail}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .intro { margin-bottom: var(--s-8); }
+  .timeline { list-style: none; margin: 0; padding: 0; max-width: var(--prose); position: relative; }
+  .timeline::before { content: ""; position: absolute; left: 0.45rem; top: 0.6rem; bottom: 0.6rem; width: 1px; background: var(--border); }
+  .item { position: relative; padding-left: 2rem; margin-bottom: var(--s-6); }
+  .marker { position: absolute; left: 0; top: 0.35rem; width: 0.95rem; height: 0.95rem; border-radius: 50%; border: 1px solid var(--border); background: var(--bg); }
+  .done .marker { background: var(--accent); border-color: var(--accent); }
+  .now .marker { border-color: var(--accent); background: var(--bg); box-shadow: inset 0 0 0 3px var(--bg), inset 0 0 0 8px var(--accent); }
+  .later { opacity: 0.75; }
+  .body { display: grid; gap: var(--s-1); }
+  .when { color: var(--accent); }
+  .now .when { color: var(--text); }
+  h3 { font-size: 1.125rem; }
+  @media (prefers-reduced-motion: no-preference) {
+    .now .marker { animation: pulse 2s var(--ease) infinite; }
+    @keyframes pulse { 0% { outline: 0 solid rgba(255,106,26,.5); } 70% { outline: 10px solid rgba(255,106,26,0); } 100% { outline: 0 solid rgba(255,106,26,0); } }
+  }
+</style>
