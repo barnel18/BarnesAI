@@ -1,6 +1,6 @@
 # Barnes Inc. — website
 
-Phase 1 brand home: positioning, the building-in-public project story, a Projects grid (portfolio), videos (empty state until the first upload), email signup, about.
+Phase 1 brand home: positioning, the building-in-public project story, a Projects grid (portfolio), a Roadmap timeline, videos (empty state until the first upload), email signup, about.
 
 - Stack: Astro 7, static output, plain CSS on design tokens. Node 22 (`.node-version`).
 - Copy/links/IDs: `src/content/site.ts` — the only file text edits touch.
@@ -23,6 +23,10 @@ Push `main` to GitHub, import the repo in Vercel (Astro defaults). Live at https
 ## Adding a project
 
 Add an item to `site.projects.items` in `src/content/site.ts` (name, status, `live: true/false`, blurb, stack tags, links — use `href: ""` for a label with no link). Push `main`; Vercel redeploys.
+
+## Editing the roadmap
+
+Edit `site.roadmap.items` in `src/content/site.ts`; each item's `state` is one of `done`, `now`, `next`, `later`.
 
 ## Later
 
