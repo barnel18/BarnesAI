@@ -1,0 +1,55 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { site } from "../content/site";
+const p = site.projects;
+---
+<section id="projects" class="section">
+  <div class="container">
+    <SectionHeading number="02" label="Projects" title={p.heading} />
+    <p class="prose muted intro" data-reveal>{p.blurb}</p>
+
+    <div class="grid-projects" data-reveal>
+      {p.items.map((it) => (
+        <article class="card project">
+          <div class="top">
+            <span class:list={["pill", { live: it.live }]}>
+              <span class="dot" aria-hidden="true"></span>{it.status}
+            </span>
+          </div>
+          <h3>{it.name}</h3>
+          <p class="muted">{it.blurb}</p>
+          <ul class="stack" aria-label="Built with">
+            {it.stack.map((s) => <li class="label">{s}</li>)}
+          </ul>
+          {it.links.length > 0 && (
+            <div class="links">
+              {it.links.map((l) =>
+                l.href ? (
+                  <a class="btn btn-ghost" href={l.href} target="_blank" rel="noopener">{l.label} ↗</a>
+                ) : (
+                  <span class="label soft">{l.label}</span>
+                )
+              )}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro { margin-bottom: var(--s-6); }
+  .grid-projects { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
+  .project { display: grid; gap: var(--s-3); align-content: start; }
+  .top { display: flex; }
+  .pill { display: inline-flex; align-items: center; gap: var(--s-2); font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem 0.6rem; }
+  .pill .dot { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--muted); }
+  .pill.live { color: var(--text); border-color: var(--accent); }
+  .pill.live .dot { background: var(--accent); }
+  h3 { font-size: 1.125rem; }
+  .stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
+  .stack li { border: 1px solid var(--border); border-radius: var(--radius); padding: 0.15rem 0.45rem; }
+  .links { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; margin-top: var(--s-1); }
+  .soft { border: 1px dashed var(--border); border-radius: var(--radius); padding: 0.4rem 0.6rem; text-transform: none; letter-spacing: 0; }
+</style>

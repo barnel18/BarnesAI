@@ -15,7 +15,8 @@ export const site = {
   },
 
   nav: [
-    { label: "Project", href: "#project" },
+    { label: "Story", href: "#project" },
+    { label: "Projects", href: "#projects" },
     { label: "Videos", href: "#videos" },
     { label: "About", href: "#about" },
     { label: "Follow", href: "#signup" },
@@ -64,6 +65,50 @@ export const site = {
       "Document as you go. I didn't record the build or the delivery. Everything from here gets recorded.",
     ],
     nextStep: "Call her, record it, and ask exactly what \"more complicated\" means.",
+  },
+
+  projects: {
+    heading: "What I've built so far",
+    blurb:
+      "All of it with Claude Code, starting from zero coding background in August 2026. Statuses are honest.",
+    items: [
+      {
+        name: "Business growth-audit pipeline",
+        status: "In use — client #1",
+        live: true,
+        blurb:
+          "Workflows → Agent → Tools: Markdown SOPs run by Claude Code, executing ~15 Python tools — Google PageSpeed, Search Console, and GA4 pulls, competitor research, staffing-vs-demand analysis from schedule and labor data — rendered into a branded PDF. Produced a 16-page growth audit for a real dog daycare.",
+        stack: ["Claude Code", "Python", "Jinja2 / WeasyPrint", "Google APIs"],
+        links: [{ label: "Private (client data) — walkthrough on request", href: "" }],
+      },
+      {
+        name: "This website",
+        status: "Live",
+        live: true,
+        blurb:
+          "Astro static site: design-token CSS, one content file for every word on the page, generated favicon and share image, sitemap, GitHub → Vercel continuous deploy. Built and shipped in one afternoon.",
+        stack: ["Astro", "CSS", "GitHub", "Vercel"],
+        links: [{ label: "Code on GitHub", href: "https://github.com/barnel18/BarnesAI" }],
+      },
+      {
+        name: "Cube Coach",
+        status: "In progress",
+        live: false,
+        blurb:
+          "A Rubik's-cube learning app: interactive 3D cube in React + three.js, a move engine with unit tests, and a tiered algorithm curriculum that gets validated by script before any lesson ships.",
+        stack: ["React", "TypeScript", "three.js"],
+        links: [{ label: "Demo soon", href: "" }],
+      },
+      {
+        name: "Claude Code workspace",
+        status: "Daily use",
+        live: true,
+        blurb:
+          "Persistent memory files, daily logs, per-project overviews, and MCP connectors (Google Drive, Gmail, Notion, Slack, Firecrawl) so every session starts with full context. It's how all of the above got built.",
+        stack: ["Claude Code", "MCP"],
+        links: [],
+      },
+    ],
   },
 
   videos: {
