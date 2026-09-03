@@ -146,7 +146,7 @@ export const site = {
         blurb:
           "Nine Claude agents — sector analysts, a macro economist, technical and sentiment analysts — each write a view, an investment board votes, and approved trades go to an Alpaca paper-trading account. My first AI project, before I knew what any of it was called. Never traded real money.",
         stack: ["Python", "Claude API", "Alpaca API"],
-        links: [{ label: "Private — walkthrough on request", href: "" }],
+        links: [{ label: "Code on GitHub", href: "https://github.com/barnel18/ai-hedge-fund" }],
       },
     ],
   },
