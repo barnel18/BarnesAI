@@ -1,0 +1,16 @@
+---
+// Small barn glyph used as the logo mark (header, favicon is a copy of this).
+interface Props { size?: string }
+const { size = "1.5rem" } = Astro.props;
+---
+<svg class="mark" viewBox="0 0 32 32" width={size} height={size} aria-hidden="true" focusable="false">
+  <path d="M3 14 L 8 7 L 16 4 L 24 7 L 29 14 V 28 H 3 Z" fill="var(--accent)" />
+  <path d="M3 14 L 8 7 L 16 4 L 24 7 L 29 14 Z" fill="var(--accent-deep)" />
+  <rect x="11" y="18" width="10" height="10" fill="var(--bg)" />
+  <path d="M11 18 L 21 28 M21 18 L 11 28" stroke="var(--gold)" stroke-width="1.5" />
+  <rect x="14" y="10" width="4" height="4" fill="var(--bg)" />
+</svg>
+
+<style>
+  .mark { flex: none; }
+</style>

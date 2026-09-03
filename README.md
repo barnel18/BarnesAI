@@ -28,6 +28,17 @@ Add an item to `site.projects.items` in `src/content/site.ts` (name, status, `li
 
 Edit `site.roadmap.items` in `src/content/site.ts`; each item's `state` is one of `done`, `now`, `next`, `later`.
 
+## The barn theme
+
+The look is "the barn after dark": night sky, barn red, lantern gold, wood-toned cards. It's all CSS and hand-drawn inline SVG — no image files to load.
+
+- **Hero barn** (`src/components/art/Barn.astro`): doors slide open, windows light up, the weathervane turns and the moon drifts as you scroll. Driven by `--sy` (scroll position in viewport heights), which the small script in `src/layouts/Base.astro` writes on `<html>`.
+- **Pasture strips** (`src/components/Pasture.astro`): a fence with a dog, cow, chicken, and pig that walk as you scroll. Change the lineup in `src/pages/index.astro` — each animal has a start position `x`, height `h`, and `speed` (how far it travels, in px, while the strip crosses the screen).
+- **Roadmap** is a fence: rail + posts. Red post = done, gold = now, outlined = later.
+- **Projects** are stalls, numbered on a wooden rail. **Buttons** carry a barn-door badge.
+- **Footer** has a horizon with a far barn and moon.
+- Reduced-motion users get the same page with nothing moving (doors open, lights on).
+
 ## Later
 
 - Paste the email-signup embed (Kit) into `site.signup.beehiivEmbedHtml`.

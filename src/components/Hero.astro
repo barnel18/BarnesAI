@@ -1,28 +1,56 @@
 ---
 import { site } from "../content/site";
+import Barn from "./art/Barn.astro";
 const h = site.hero;
 ---
 <section id="top" class="hero">
-  <div class="container">
-    <p class="label" data-reveal>{h.eyebrow}</p>
-    <h1 data-reveal>{h.headline}</h1>
-    <p class="positioning prose" data-reveal>{h.positioning}</p>
-    <p class="positioning prose" data-reveal>{h.content}</p>
-    <p class="audience prose muted" data-reveal>{h.audience}</p>
-    <div class="ctas" data-reveal>
-      <a class="btn btn-primary" href={h.primaryCta.href}>{h.primaryCta.label}</a>
-      <a class="btn btn-ghost" href={h.secondaryCta.href} target="_blank" rel="noopener">{h.secondaryCta.label} ↗</a>
+  <div class="container hero-grid">
+    <div class="top">
+      <p class="label" data-reveal>{h.eyebrow}</p>
+      <h1 data-reveal>{h.headline}</h1>
     </div>
-    <p class="method" data-reveal><span class="label">Method</span> {h.method}</p>
+    <div class="art">
+      <Barn />
+      <p class="hint label">Scroll to open the doors</p>
+    </div>
+    <div class="rest">
+      <p class="positioning prose" data-reveal>{h.positioning}</p>
+      <p class="positioning prose" data-reveal>{h.content}</p>
+      <p class="audience prose muted" data-reveal>{h.audience}</p>
+      <div class="ctas" data-reveal>
+        <a class="btn btn-primary" href={h.primaryCta.href}>{h.primaryCta.label}</a>
+        <a class="btn btn-ghost" href={h.secondaryCta.href} target="_blank" rel="noopener">{h.secondaryCta.label} ↗</a>
+      </div>
+      <p class="method" data-reveal><span class="label">Method</span> {h.method}</p>
+    </div>
   </div>
 </section>
 
 <style>
-  .hero { padding-block: var(--section); position: relative; overflow: hidden; }
-  .hero::before { content: ""; position: absolute; inset: -20% -10% auto auto; width: 40rem; height: 40rem; background: radial-gradient(closest-side, var(--accent-glow), transparent 70%); pointer-events: none; }
-  .hero > .container { position: relative; display: grid; gap: var(--s-6); }
+  .hero {
+    padding-block: var(--section);
+    position: relative;
+    background:
+      radial-gradient(1.5px 1.5px at 12% 18%, rgba(242,235,223,.6), transparent),
+      radial-gradient(1px 1px at 28% 62%, rgba(242,235,223,.45), transparent),
+      radial-gradient(1.5px 1.5px at 44% 12%, rgba(242,235,223,.5), transparent),
+      radial-gradient(1px 1px at 58% 40%, rgba(242,235,223,.4), transparent),
+      radial-gradient(1px 1px at 8% 80%, rgba(242,235,223,.35), transparent),
+      linear-gradient(180deg, var(--sky) 0%, var(--bg) 85%);
+  }
+  /* Mobile: headline, then the barn, then the rest. Desktop: copy left, barn right (sticky). */
+  .hero-grid { position: relative; display: grid; gap: var(--s-8); grid-template-areas: "top" "art" "rest"; }
+  .top { grid-area: top; display: grid; gap: var(--s-6); }
+  .rest { grid-area: rest; display: grid; gap: var(--s-6); }
+  .art { grid-area: art; display: grid; gap: var(--s-3); justify-items: center; width: 100%; max-width: 30rem; margin-inline: auto; }
   h1 { max-width: 16ch; }
   .positioning { font-size: var(--fs-body); }
   .ctas { display: flex; flex-wrap: wrap; gap: var(--s-3); }
-  .method { display: grid; gap: var(--s-2); padding: var(--s-4); border: 1px dashed var(--border); border-radius: var(--radius); max-width: var(--prose); }
+  .method { display: grid; gap: var(--s-2); padding: var(--s-4); border: 1px dashed var(--wood); border-radius: var(--radius); max-width: var(--prose); }
+  .hint { opacity: 0.8; }
+  @media (prefers-reduced-motion: reduce) { .hint { display: none; } }
+  @media (min-width: 900px) {
+    .hero-grid { grid-template-columns: 1.15fr 0.85fr; grid-template-areas: "top art" "rest art"; column-gap: var(--s-12); row-gap: var(--s-6); align-items: start; }
+    .art { position: sticky; top: 5.5rem; max-width: none; padding-top: var(--s-6); }
+  }
 </style>

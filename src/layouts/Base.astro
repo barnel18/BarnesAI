@@ -18,7 +18,7 @@ const ogImage = Astro.site ? new URL(site.meta.ogImage, Astro.site).href : site.
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="theme-color" content="#0B0D10" />
+    <meta name="theme-color" content="#0C0F14" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -46,6 +46,7 @@ const ogImage = Astro.site ? new URL(site.meta.ogImage, Astro.site).href : site.
     <Footer />
 
     <script>
+      // Reveal on first sight
       const els = document.querySelectorAll("[data-reveal]");
       if ("IntersectionObserver" in window && els.length) {
         const io = new IntersectionObserver(
@@ -63,6 +64,38 @@ const ogImage = Astro.site ? new URL(site.meta.ogImage, Astro.site).href : site.
       } else {
         els.forEach((el) => el.classList.add("is-visible"));
       }
+
+      // Scroll-driven values. CSS does all the drawing; this only writes two numbers:
+      //   --sy on <html>: scroll position in viewport heights (barn doors, weathervane, moon)
+      //   --p on each [data-scroll]: 0 when it enters at the bottom, 1 when it leaves at the top (pasture animals)
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const root = document.documentElement;
+      const tracked = Array.from(document.querySelectorAll<HTMLElement>("[data-scroll]"));
+      let queued = false;
+      const update = () => {
+        queued = false;
+        const vh = window.innerHeight || 1;
+        root.style.setProperty("--sy", (window.scrollY / vh).toFixed(4));
+        for (const el of tracked) {
+          const r = el.getBoundingClientRect();
+          const p = (vh - r.top) / (vh + r.height);
+          el.style.setProperty("--p", Math.min(1, Math.max(0, p)).toFixed(4));
+        }
+      };
+      const schedule = () => {
+        if (!queued) { queued = true; requestAnimationFrame(update); }
+      };
+      const start = () => {
+        window.addEventListener("scroll", schedule, { passive: true });
+        window.addEventListener("resize", schedule);
+        update();
+      };
+      const stop = () => {
+        window.removeEventListener("scroll", schedule);
+        window.removeEventListener("resize", schedule);
+      };
+      if (!reduce.matches) start();
+      reduce.addEventListener("change", (e) => (e.matches ? stop() : start()));
     </script>
   </body>
 </html>

@@ -1,0 +1,38 @@
+---
+// Footer horizon: two hills, a far barn, a few trees, and a moon that drifts as the footer scrolls in.
+---
+<div class="horizon" data-scroll aria-hidden="true">
+  <svg viewBox="0 0 1440 170" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <g class="stars" fill="var(--text)">
+      <circle cx="90" cy="30" r="1.3" /><circle cx="330" cy="58" r="1.1" /><circle cx="520" cy="22" r="1.4" />
+      <circle cx="760" cy="48" r="1.2" /><circle cx="980" cy="18" r="1.1" /><circle cx="1180" cy="52" r="1.3" /><circle cx="1380" cy="28" r="1.2" />
+    </g>
+    <circle class="moon" cx="1240" cy="46" r="16" fill="var(--gold)" />
+
+    <!-- back hill -->
+    <path d="M0 122 C 220 96, 460 118, 720 106 C 980 94, 1200 116, 1440 100 V 170 H 0 Z" fill="var(--surface-2)" />
+    <!-- trees on the back hill -->
+    <g fill="var(--wood-2)">
+      <path d="M240 112 L 252 84 L 264 112 Z" /><path d="M262 116 L 278 78 L 294 116 Z" /><path d="M292 112 L 302 90 L 312 112 Z" />
+      <path d="M1000 108 L 1014 76 L 1028 108 Z" /><path d="M1026 110 L 1036 88 L 1046 110 Z" />
+    </g>
+    <!-- far barn + silo -->
+    <g fill="var(--wood-2)">
+      <path d="M1096 118 L 1104 106 L 1120 100 L 1136 106 L 1144 118 V 136 H 1096 Z" />
+      <rect x="1150" y="104" width="14" height="32" /><path d="M1150 104 A 7 7 0 0 1 1164 104 Z" />
+    </g>
+    <path d="M1113 124 H 1127 V 136 H 1113 Z" fill="var(--gold)" opacity="0.7" />
+    <!-- front hill -->
+    <path d="M0 146 C 300 128, 600 150, 900 138 C 1100 130, 1300 150, 1440 142 V 170 H 0 Z" fill="var(--surface)" />
+  </svg>
+</div>
+
+<style>
+  .horizon { line-height: 0; margin-top: var(--s-8); }
+  svg { width: 100%; height: clamp(90px, 12vw, 170px); }
+  .stars { opacity: 0.5; }
+  .moon { transform-box: view-box; }
+  @media (prefers-reduced-motion: no-preference) {
+    .moon { transform: translate(calc((var(--p, 0.5) - 0.5) * -80px), calc((var(--p, 0.5) - 0.5) * -30px)); }
+  }
+</style>

@@ -9,9 +9,10 @@ const p = site.projects;
     <p class="prose muted intro" data-reveal>{p.blurb}</p>
 
     <div class="grid-projects" data-reveal>
-      {p.items.map((it) => (
-        <article class="card project">
+      {p.items.map((it, i) => (
+        <article class="card stall">
           <div class="top">
+            <span class="label stall-no">Stall {String(i + 1).padStart(2, "0")}</span>
             <span class:list={["pill", { live: it.live }]}>
               <span class="dot" aria-hidden="true"></span>{it.status}
             </span>
@@ -41,15 +42,17 @@ const p = site.projects;
 <style>
   .intro { margin-bottom: var(--s-6); }
   .grid-projects { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
-  .project { display: grid; gap: var(--s-3); align-content: start; }
-  .top { display: flex; }
-  .pill { display: inline-flex; align-items: center; gap: var(--s-2); font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem 0.6rem; }
+  /* Each project is a stall: a wooden header rail with a number plate and a status tag */
+  .stall { display: grid; gap: var(--s-3); align-content: start; padding-top: 0; overflow: hidden; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); margin-inline: calc(-1 * var(--s-6)); padding: var(--s-2) var(--s-6); background: linear-gradient(180deg, var(--wood-2), var(--surface-2)); border-bottom: 2px solid var(--wood); }
+  .stall-no { color: var(--gold); }
+  .pill { display: inline-flex; align-items: center; gap: var(--s-2); font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem 0.6rem; background: var(--surface); }
   .pill .dot { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--muted); }
   .pill.live { color: var(--text); border-color: var(--accent); }
-  .pill.live .dot { background: var(--accent); }
-  h3 { font-size: 1.125rem; }
+  .pill.live .dot { background: var(--accent-text); }
+  h3 { font-size: 1.125rem; margin-top: var(--s-2); }
   .stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
   .stack li { border: 1px solid var(--border); border-radius: var(--radius); padding: 0.15rem 0.45rem; }
   .links { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; margin-top: var(--s-1); }
-  .soft { border: 1px dashed var(--border); border-radius: var(--radius); padding: 0.4rem 0.6rem; text-transform: none; letter-spacing: 0; }
+  .soft { border: 1px dashed var(--wood); border-radius: var(--radius); padding: 0.4rem 0.6rem; text-transform: none; letter-spacing: 0; }
 </style>

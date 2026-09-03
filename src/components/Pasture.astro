@@ -1,0 +1,37 @@
+---
+// A strip of fence with animals that walk left as you scroll past (speed in px over the strip's full pass).
+import Animal from "./art/Animal.astro";
+type Kind = "dog" | "cow" | "chicken" | "pig";
+interface Props { id: string; animals: { kind: Kind; x: string; h: string; speed: number }[] }
+const { id, animals } = Astro.props;
+const pid = `fence-${id}`;
+---
+<div class="pasture" data-scroll aria-hidden="true">
+  {animals.map((a) => (
+    <div class="animal" style={`--x:${a.x}; --h:${a.h}; --speed:${a.speed};`}>
+      <Animal kind={a.kind} />
+    </div>
+  ))}
+  <svg class="fence" width="100%" height="64" focusable="false">
+    <defs>
+      <pattern id={pid} width="150" height="64" patternUnits="userSpaceOnUse">
+        <rect x="0" y="6" width="10" height="58" rx="1" fill="var(--wood)" />
+        <path d="M0 6 L 5 0 L 10 6 Z" fill="var(--wood)" />
+        <rect x="0" y="18" width="150" height="6" fill="var(--wood-2)" />
+        <rect x="0" y="38" width="150" height="6" fill="var(--wood-2)" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="64" fill={`url(#${pid})`} />
+  </svg>
+</div>
+
+<style>
+  .pasture { position: relative; height: 9.5rem; overflow: hidden; }
+  .fence { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; }
+  .animal { position: absolute; bottom: 0.35rem; left: var(--x); height: var(--h); color: var(--muted); opacity: 0.55; }
+  .animal :global(svg) { height: 100%; width: auto; }
+  @media (prefers-reduced-motion: no-preference) {
+    .animal { transform: translateX(calc((var(--p, 0.5) - 0.5) * var(--speed) * -1px)); }
+  }
+  @media (max-width: 640px) { .pasture { height: 7.5rem; } .animal { height: calc(var(--h) * 0.72); } }
+</style>

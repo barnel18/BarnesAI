@@ -12,16 +12,16 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img, svg, iframe { max-width: 100%; display: block; }
-a { color: inherit; text-decoration-color: var(--border); text-underline-offset: 0.2em; }
-a:hover { text-decoration-color: var(--accent); }
-h1, h2, h3 { font-family: var(--font-heading); font-variation-settings: "opsz" 96; letter-spacing: -0.02em; margin: 0; }
+a { color: inherit; text-decoration-color: var(--wood); text-underline-offset: 0.2em; }
+a:hover { text-decoration-color: var(--accent-text); }
+h1, h2, h3 { font-family: var(--font-heading); font-variation-settings: "opsz" 96; letter-spacing: -0.02em; margin: 0; text-wrap: pretty; }
 h1 { font-size: var(--fs-display); font-weight: 800; line-height: var(--lh-tight); }
 h2 { font-size: var(--fs-h2); font-weight: 700; line-height: var(--lh-heading); }
 h3 { font-size: var(--fs-h3); font-weight: 600; line-height: var(--lh-heading); }
 p { margin: 0 0 var(--s-4); }
 p:last-child { margin-bottom: 0; }
 
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
 
 .skip-link {
   position: absolute; left: var(--s-4); top: -3rem;
@@ -40,20 +40,35 @@ p:last-child { margin-bottom: 0; }
 }
 .muted { color: var(--muted); }
 
+/* Buttons — the primary one carries a small barn-door badge (cross-braced panel) */
 .btn {
-  display: inline-flex; align-items: center; gap: var(--s-2);
+  display: inline-flex; align-items: center; gap: var(--s-3);
   padding: 0.8rem 1.25rem; border-radius: var(--radius);
   font-weight: 600; font-size: var(--fs-sm); text-decoration: none;
   border: 1px solid var(--border);
-  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
-.btn-primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
-.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
-.btn-ghost { background: transparent; color: var(--text); }
-.btn-ghost:hover { border-color: var(--muted); }
+.btn-primary {
+  background: var(--accent); color: var(--on-accent); border-color: var(--accent-deep);
+  box-shadow: inset 0 1px 0 rgba(255, 244, 232, 0.18), inset 0 -2px 0 rgba(0, 0, 0, 0.28);
+}
+.btn-primary::before {
+  content: ""; width: 0.95rem; height: 0.95rem; flex: none;
+  border: 1.5px solid rgba(255, 244, 232, 0.75); border-radius: 1px;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 0.75px), rgba(255, 244, 232, 0.75) calc(50% - 0.75px), rgba(255, 244, 232, 0.75) calc(50% + 0.75px), transparent calc(50% + 0.75px)),
+    linear-gradient(to bottom right, transparent calc(50% - 0.75px), rgba(255, 244, 232, 0.75) calc(50% - 0.75px), rgba(255, 244, 232, 0.75) calc(50% + 0.75px), transparent calc(50% + 0.75px));
+}
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-deep); box-shadow: inset 0 1px 0 rgba(255, 244, 232, 0.24), inset 0 -2px 0 rgba(0, 0, 0, 0.28), 0 0 0 4px var(--accent-glow); }
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--wood); }
+.btn-ghost:hover { border-color: var(--gold); background: var(--surface-2); }
 
+/* Cards — wood-toned, with faint horizontal board seams */
 .card {
-  background: var(--surface); border: 1px solid var(--border);
+  background:
+    repeating-linear-gradient(180deg, transparent 0 27px, rgba(0, 0, 0, 0.26) 27px 28px, rgba(255, 244, 232, 0.025) 28px 29px),
+    var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius); padding: var(--s-6);
 }
 .card-accent { border-left: 3px solid var(--accent); }

@@ -1,22 +1,26 @@
 ---
 import { site } from "../content/site";
+import Horizon from "./art/Horizon.astro";
 const links = site.footer.links.filter((l) => l.enabled);
 ---
 <footer class="footer">
-  <div class="container footer-inner">
-    <span class="label">{site.footer.note}</span>
-    <ul>
-      {links.map((l) => (
-        <li><a href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel={l.href.startsWith("http") ? "noopener" : undefined}>{l.label}</a></li>
-      ))}
-    </ul>
+  <Horizon />
+  <div class="bar">
+    <div class="container footer-inner">
+      <span class="label">{site.footer.note}</span>
+      <ul>
+        {links.map((l) => (
+          <li><a href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel={l.href.startsWith("http") ? "noopener" : undefined}>{l.label}</a></li>
+        ))}
+      </ul>
+    </div>
   </div>
 </footer>
 
 <style>
-  .footer { border-top: 1px solid var(--border); padding-block: var(--s-8); }
+  .bar { background: var(--surface); padding-block: var(--s-8); }
   .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-4); }
   ul { list-style: none; margin: 0; padding: 0; display: flex; gap: var(--s-6); }
   a { font-size: var(--fs-sm); text-decoration: none; color: var(--muted); }
-  a:hover { color: var(--accent); }
+  a:hover { color: var(--gold); }
 </style>

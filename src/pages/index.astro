@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
+import Pasture from "../components/Pasture.astro";
 import BuildingInPublic from "../components/BuildingInPublic.astro";
 import Projects from "../components/Projects.astro";
 import Roadmap from "../components/Roadmap.astro";
@@ -10,8 +11,26 @@ import About from "../components/About.astro";
 ---
 <Base>
   <Hero />
+  <Pasture
+    id="a"
+    animals={[
+      { kind: "dog", x: "24%", h: "3.6rem", speed: 520 },
+      { kind: "chicken", x: "38%", h: "2.6rem", speed: 140 },
+      { kind: "cow", x: "62%", h: "4.4rem", speed: 90 },
+      { kind: "chicken", x: "86%", h: "2.2rem", speed: 180 },
+    ]}
+  />
   <BuildingInPublic />
   <Projects />
+  <Pasture
+    id="b"
+    animals={[
+      { kind: "pig", x: "12%", h: "3.4rem", speed: 160 },
+      { kind: "cow", x: "36%", h: "4.4rem", speed: 80 },
+      { kind: "chicken", x: "60%", h: "2.4rem", speed: 200 },
+      { kind: "dog", x: "80%", h: "3.6rem", speed: 600 },
+    ]}
+  />
   <Roadmap />
   <Videos />
   <Signup />
