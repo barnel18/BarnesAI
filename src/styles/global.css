@@ -74,6 +74,15 @@ p:last-child { margin-bottom: 0; }
 }
 .card-accent { border-left: 3px solid var(--accent); }
 
+/* Inside the barn: plank wall, beams top and bottom (wraps Projects + Skills) */
+.inside {
+  position: relative;
+  background: repeating-linear-gradient(90deg, #1A1411 0 84px, #100C0A 84px 88px), #1A1411;
+  border-top: 12px solid var(--wood-2); border-bottom: 12px solid var(--wood-2);
+  box-shadow: inset 0 40px 80px rgba(0,0,0,.5), inset 0 -40px 80px rgba(0,0,0,.5);
+}
+.inside .section + .section { padding-top: 0; }
+
 .grid-2 { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
 
 /* Reveal — motion only when allowed */

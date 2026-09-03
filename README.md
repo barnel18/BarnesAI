@@ -35,7 +35,7 @@ The whole page is one scene: a farm at night. It's all CSS and hand-drawn inline
 - **Sky** (`src/components/art/Sky.astro`): a fixed starry night behind everything. Three star layers twinkle and drift, a moon starts top-right and sets by the footer as you scroll, and a meteor crosses now and then.
 - **Hero barn** (`art/Barn.astro`): doors slide open, windows light up, the weathervane turns. Driven by `--sy` (scroll position in viewport heights), which the small script in `src/layouts/Base.astro` writes on `<html>`.
 - **Pasture strips** (`src/components/Pasture.astro`): grass, a fence, fireflies, and animals (dog, cow, rooster, pig, sheep) that walk as you scroll — their legs swing with scroll progress. Change the lineup in `src/pages/index.astro`: each animal has a start position `x`, height `h`, and `speed` (px it travels while the strip crosses the screen).
-- **Projects** are stalls inside the barn: plank wall, beams, a lantern.
+- **Projects** are stalls inside the barn: plank wall, beams, a lantern. **Skills** hang on a pegboard tool wall in the same room — edit `skills.groups` in `src/content/site.ts`.
 - **Roadmap** is a fence rail with posts. Red post = done, gold = now, outlined = later.
 - **Hills** with a windmill that turns as you scroll, a **wheat** field, a **mailbox** by the signup, a **farmhouse** with the porch light on by the About, and a **horizon** in the footer.
 - Labels are stenciled (Saira Stencil One) on wooden tags. Buttons carry a barn-door badge.

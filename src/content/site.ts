@@ -17,6 +17,7 @@ export const site = {
   nav: [
     { label: "Story", href: "#project" },
     { label: "Projects", href: "#projects" },
+    { label: "Skills", href: "#skills" },
     { label: "Roadmap", href: "#roadmap" },
     { label: "Videos", href: "#videos" },
     { label: "About", href: "#about" },
@@ -73,7 +74,7 @@ export const site = {
   projects: {
     heading: "What I've built so far",
     blurb:
-      "All of it with Claude Code, starting from zero coding background in August 2026. Statuses are honest.",
+      "All of it with Claude, starting from zero coding background in summer 2026. Statuses are honest. Most of the code is private for now — ask and I'll walk you through any of it.",
     items: [
       {
         name: "Business growth-audit pipeline",
@@ -85,12 +86,39 @@ export const site = {
         links: [{ label: "Private (client data) — walkthrough on request", href: "" }],
       },
       {
+        name: "Fantasy football draft engine",
+        status: "Used live — Sep 1, 2026 draft",
+        live: true,
+        blurb:
+          "A draft-day decision engine. Pulls projections and ADP from Sleeper, ESPN, and FantasyFootballCalculator, scores every player under the league's exact rules (matched Sleeper's published points 551 for 551), ranks by value over replacement, then runs thousands of simulated drafts to estimate who survives to my next pick. Terminal console plus a browser board that agree on 112 of 112 test states. Day one it caught a real edge: a suspended RB still priced as a third-round pick.",
+        stack: ["Python", "numpy / pandas", "Monte Carlo sim", "Sleeper + ESPN APIs"],
+        links: [{ label: "Private — walkthrough on request", href: "" }],
+      },
+      {
+        name: "School Hub",
+        status: "Daily use — Fall 2026",
+        live: true,
+        blurb:
+          "Canvas → Notion → Claude. A Python tool (standard library only) pulls every assignment, exam, event, grade, announcement, and file for five courses into a local cache and mirrors it into Notion databases without overwriting what I've marked done. Seven custom Claude Code skills on top: sync, week plan, study guide, flashcards, outline, exam prep, course setup. Unit-tested against fixture data.",
+        stack: ["Python", "Canvas API", "Notion API", "Claude Code skills"],
+        links: [{ label: "Private — walkthrough on request", href: "" }],
+      },
+      {
+        name: "Food Dealz",
+        status: "Just started — Sep 2026",
+        live: false,
+        blurb:
+          "Every current food deal near you, restaurants and grocery, compared at the item level: the cheapest pizza slice or pound of ground beef within reach. Launch market is Madison. Next.js 16 on Supabase (Postgres + PostGIS, row-level security), a canonical item taxonomy, and Claude structured extraction with a hard rule that every price must appear verbatim in the captured text. Schema, migrations, and taxonomy are done; scrapers are next.",
+        stack: ["Next.js 16", "TypeScript", "Supabase / PostGIS", "Claude API"],
+        links: [{ label: "In progress — private", href: "" }],
+      },
+      {
         name: "This website",
         status: "Live",
         live: true,
         blurb:
-          "Astro static site: design-token CSS, one content file for every word on the page, generated favicon and share image, sitemap, GitHub → Vercel continuous deploy. Built and shipped in one afternoon.",
-        stack: ["Astro", "CSS", "GitHub", "Vercel"],
+          "Astro static site with one content file for every word on the page, design-token CSS, and a farm-at-night theme drawn entirely in hand-written SVG and CSS: a barn whose doors open on scroll, animals that walk, a moon that sets. Generated favicon and share image, sitemap, GitHub → Vercel continuous deploy.",
+        stack: ["Astro", "CSS", "SVG", "Vercel"],
         links: [{ label: "Code on GitHub", href: "https://github.com/barnel18/BarnesAI" }],
       },
       {
@@ -98,8 +126,8 @@ export const site = {
         status: "In progress",
         live: false,
         blurb:
-          "A Rubik's-cube learning app: interactive 3D cube in React + three.js, a move engine with unit tests, and a tiered algorithm curriculum that gets validated by script before any lesson ships.",
-        stack: ["React", "TypeScript", "three.js"],
+          "A Rubik's-cube learning app: interactive 3D cube in React + three.js, a move engine with unit tests, a verified layer-by-layer beginner solver, and a tiered algorithm curriculum that gets validated by script before any lesson ships.",
+        stack: ["React", "TypeScript", "three.js", "Vitest"],
         links: [{ label: "Demo soon", href: "" }],
       },
       {
@@ -107,9 +135,46 @@ export const site = {
         status: "Daily use",
         live: true,
         blurb:
-          "Persistent memory files, daily logs, per-project overviews, and MCP connectors (Google Drive, Gmail, Notion, Slack, Firecrawl) so every session starts with full context. It's how all of the above got built.",
-        stack: ["Claude Code", "MCP"],
+          "Persistent memory files, daily logs, per-project overviews, and MCP connectors (Google Drive, Gmail, Notion, Slack, Firecrawl, Apify) so every session starts with full context. Plus a local AI stack on an M2 Mac: Ollama for text models, ComfyUI with SDXL for images. It's how all of the above got built.",
+        stack: ["Claude Code", "MCP", "Ollama", "ComfyUI"],
         links: [],
+      },
+      {
+        name: "AI hedge fund (paper trading)",
+        status: "First build — Jun 2026",
+        live: false,
+        blurb:
+          "Nine Claude agents — sector analysts, a macro economist, technical and sentiment analysts — each write a view, an investment board votes, and approved trades go to an Alpaca paper-trading account. My first AI project, before I knew what any of it was called. Never traded real money.",
+        stack: ["Python", "Claude API", "Alpaca API"],
+        links: [{ label: "Private — walkthrough on request", href: "" }],
+      },
+    ],
+  },
+
+  skills: {
+    heading: "What I can actually do",
+    blurb:
+      "Only things I've shipped with. Every tool here is holding up at least one project above.",
+    groups: [
+      {
+        name: "AI & agents",
+        items: ["Claude Code (daily driver)", "Claude API — structured outputs, batches", "MCP connectors", "Multi-agent workflows", "Prompt & workflow design", "Custom Claude Code skills", "Local models — Ollama, ComfyUI / SDXL"],
+      },
+      {
+        name: "Python",
+        items: ["Data pipelines", "Monte Carlo simulation", "numpy / pandas", "Fuzzy name matching (rapidfuzz)", "httpx / API clients", "SQLite", "unittest", "Jinja2 + WeasyPrint PDFs", "Terminal UIs (rich)"],
+      },
+      {
+        name: "Web",
+        items: ["TypeScript", "React", "Next.js 16 (App Router)", "three.js / react-three-fiber", "Astro", "Tailwind v4", "CSS design tokens", "Hand-drawn SVG & scroll-driven animation", "Vite / Vitest", "zod", "zustand"],
+      },
+      {
+        name: "Data & infra",
+        items: ["Supabase — Postgres, PostGIS, RLS, migrations", "Google APIs — PageSpeed, Search Console, GA4", "Canvas & Notion APIs", "Git / GitHub", "Vercel", "pnpm / npm / fnm", "Headless Chrome automation", "Secrets hygiene (.env, gitignore)"],
+      },
+      {
+        name: "Business",
+        items: ["SEO & competitor audits", "Google Business Profile", "Staffing & labor-cost analysis", "Client debriefs", "Building in public"],
       },
     ],
   },
