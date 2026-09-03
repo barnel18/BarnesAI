@@ -1,0 +1,40 @@
+---
+// Rolling hills with pines, a couple of round trees, and a windmill whose blades turn as you scroll.
+---
+<div class="hills" data-scroll aria-hidden="true">
+  <svg viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <path d="M0 150 C 200 120 400 142 640 126 C 880 112 1100 140 1440 116 V 220 H 0 Z" fill="#161D17" />
+    <g fill="#1F2A1F">
+      <path d="M180 140 L 200 92 L 220 140 Z" /><path d="M206 144 L 232 78 L 258 144 Z" /><path d="M252 140 L 270 100 L 288 140 Z" />
+      <path d="M760 128 L 782 74 L 804 128 Z" /><path d="M798 132 L 816 96 L 834 132 Z" />
+      <circle cx="520" cy="118" r="22" /><rect x="517" y="130" width="6" height="16" />
+      <circle cx="1060" cy="112" r="26" /><rect x="1057" y="126" width="6" height="18" />
+    </g>
+    <!-- windmill -->
+    <g fill="#2A2320" stroke="#2A2320">
+      <path d="M1168 210 L 1186 92 L 1196 92 L 1214 210 Z" stroke="none" />
+      <path d="M1176 160 L 1206 140 M1174 176 L 1208 156 M1180 128 L 1202 112 M1178 144 L 1204 128" stroke-width="2" />
+      <rect x="1160" y="206" width="62" height="6" stroke="none" />
+    </g>
+    <g class="blades" style="transform-origin: 1191px 84px">
+      <g fill="#3B322C">
+        <path d="M1191 84 L 1176 30 L 1206 30 Z" /><path d="M1191 84 L 1245 69 L 1245 99 Z" />
+        <path d="M1191 84 L 1206 138 L 1176 138 Z" /><path d="M1191 84 L 1137 99 L 1137 69 Z" />
+        <path d="M1191 84 L 1155 42 L 1173 30 Z" /><path d="M1191 84 L 1227 42 L 1233 60 Z" />
+        <path d="M1191 84 L 1227 126 L 1209 138 Z" /><path d="M1191 84 L 1155 126 L 1149 108 Z" />
+      </g>
+      <circle cx="1191" cy="84" r="6" fill="#4A3B2E" />
+    </g>
+    <path d="M1191 84 L 1250 90 L 1250 78 Z" fill="#2A2320" />
+    <path d="M0 176 C 300 158 600 182 900 168 C 1120 158 1300 182 1440 172 V 220 H 0 Z" fill="var(--ground)" />
+  </svg>
+</div>
+
+<style>
+  .hills { line-height: 0; }
+  svg { width: 100%; height: clamp(110px, 15vw, 220px); }
+  .blades { transform-box: view-box; }
+  @media (prefers-reduced-motion: no-preference) {
+    .blades { transform: rotate(calc(var(--p, 0.5) * 240deg)); }
+  }
+</style>

@@ -3,7 +3,10 @@ import SectionHeading from "./SectionHeading.astro";
 import { site } from "../content/site";
 const p = site.projects;
 ---
-<section id="projects" class="section">
+<section id="projects" class="section inside">
+  <div class="lantern" aria-hidden="true">
+    <svg viewBox="0 0 40 90" focusable="false"><path d="M20 0 V 22" stroke="var(--wood)" stroke-width="3" /><path d="M8 26 H 32 L 28 32 H 12 Z" fill="var(--wood-2)" /><rect x="11" y="32" width="18" height="30" rx="2" fill="var(--gold)" /><path d="M11 40 H 29 M11 54 H 29 M20 32 V 62" stroke="var(--wood-2)" stroke-width="1.5" /><path d="M12 62 H 28 L 26 70 H 14 Z" fill="var(--wood-2)" /><circle cx="20" cy="47" r="30" fill="url(#lantern-glow)" /><defs><radialGradient id="lantern-glow"><stop offset="0" stop-color="rgba(233,196,106,.45)" /><stop offset="1" stop-color="rgba(233,196,106,0)" /></radialGradient></defs></svg>
+  </div>
   <div class="container">
     <SectionHeading number="02" label="Projects" title={p.heading} />
     <p class="prose muted intro" data-reveal>{p.blurb}</p>
@@ -40,6 +43,14 @@ const p = site.projects;
 </section>
 
 <style>
+  /* Inside the barn: plank wall, beams top and bottom, a lantern on the beam */
+  .inside {
+    background: repeating-linear-gradient(90deg, #1A1411 0 84px, #100C0A 84px 88px), #1A1411;
+    border-top: 12px solid var(--wood-2); border-bottom: 12px solid var(--wood-2);
+    box-shadow: inset 0 40px 80px rgba(0,0,0,.5), inset 0 -40px 80px rgba(0,0,0,.5);
+  }
+  .lantern { position: absolute; top: 0; right: clamp(1rem, 6vw, 6rem); width: 44px; line-height: 0; }
+  .lantern svg { width: 100%; overflow: visible; }
   .intro { margin-bottom: var(--s-6); }
   .grid-projects { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
   /* Each project is a stall: a wooden header rail with a number plate and a status tag */
@@ -54,5 +65,9 @@ const p = site.projects;
   .stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
   .stack li { border: 1px solid var(--border); border-radius: var(--radius); padding: 0.15rem 0.45rem; }
   .links { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; margin-top: var(--s-1); }
+  @media (prefers-reduced-motion: no-preference) {
+    .lantern { transform-origin: top center; animation: swing 5s ease-in-out infinite alternate; }
+    @keyframes swing { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }
+  }
   .soft { border: 1px dashed var(--wood); border-radius: var(--radius); padding: 0.4rem 0.6rem; text-transform: none; letter-spacing: 0; }
 </style>

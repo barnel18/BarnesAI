@@ -1,13 +1,23 @@
 ---
 import SectionHeading from "./SectionHeading.astro";
 import { site } from "../content/site";
+import Farmhouse from "./art/Farmhouse.astro";
 const a = site.about;
 ---
 <section id="about" class="section">
   <div class="container">
     <SectionHeading number="06" label="Who" title={a.heading} />
-    <div class="prose" data-reveal>
-      {a.paragraphs.map((p) => <p>{p}</p>)}
+    <div class="row">
+      <div class="prose" data-reveal>
+        {a.paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+      <div class="home" data-reveal><Farmhouse /></div>
     </div>
   </div>
 </section>
+
+<style>
+  .row { display: grid; gap: var(--s-8); align-items: end; }
+  .home { justify-self: center; width: min(100%, 17rem); }
+  @media (min-width: 900px) { .row { grid-template-columns: minmax(0, 1fr) auto; } .home { justify-self: end; } }
+</style>

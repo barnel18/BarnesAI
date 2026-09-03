@@ -1,6 +1,7 @@
 ---
 import { site } from "../content/site";
 import Barn from "./art/Barn.astro";
+import Fireflies from "./art/Fireflies.astro";
 const h = site.hero;
 ---
 <section id="top" class="hero">
@@ -10,6 +11,7 @@ const h = site.hero;
       <h1 data-reveal>{h.headline}</h1>
     </div>
     <div class="art">
+      <Fireflies count={6} seed={9} />
       <Barn />
       <p class="hint label">Scroll to open the doors</p>
     </div>
@@ -27,22 +29,12 @@ const h = site.hero;
 </section>
 
 <style>
-  .hero {
-    padding-block: var(--section);
-    position: relative;
-    background:
-      radial-gradient(1.5px 1.5px at 12% 18%, rgba(242,235,223,.6), transparent),
-      radial-gradient(1px 1px at 28% 62%, rgba(242,235,223,.45), transparent),
-      radial-gradient(1.5px 1.5px at 44% 12%, rgba(242,235,223,.5), transparent),
-      radial-gradient(1px 1px at 58% 40%, rgba(242,235,223,.4), transparent),
-      radial-gradient(1px 1px at 8% 80%, rgba(242,235,223,.35), transparent),
-      linear-gradient(180deg, var(--sky) 0%, var(--bg) 85%);
-  }
+  .hero { padding-block: var(--section); position: relative; }
   /* Mobile: headline, then the barn, then the rest. Desktop: copy left, barn right (sticky). */
   .hero-grid { position: relative; display: grid; gap: var(--s-8); grid-template-areas: "top" "art" "rest"; }
   .top { grid-area: top; display: grid; gap: var(--s-6); }
   .rest { grid-area: rest; display: grid; gap: var(--s-6); }
-  .art { grid-area: art; display: grid; gap: var(--s-3); justify-items: center; width: 100%; max-width: 30rem; margin-inline: auto; }
+  .art { grid-area: art; position: relative; display: grid; gap: var(--s-3); justify-items: center; width: 100%; max-width: 30rem; margin-inline: auto; }
   h1 { max-width: 16ch; }
   .positioning { font-size: var(--fs-body); }
   .ctas { display: flex; flex-wrap: wrap; gap: var(--s-3); }

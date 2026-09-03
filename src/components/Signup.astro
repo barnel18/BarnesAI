@@ -1,12 +1,14 @@
 ---
 import SectionHeading from "./SectionHeading.astro";
 import { site } from "../content/site";
+import Mailbox from "./art/Mailbox.astro";
 const s = site.signup;
 ---
 <section id="signup" class="section">
   <div class="container">
     <SectionHeading number="05" label="Follow along" title={s.heading} />
     <p class="prose muted" data-reveal>{s.blurb}</p>
+    <div class="row">
 
     {s.beehiivEmbedHtml ? (
       <div class="embed" data-reveal set:html={s.beehiivEmbedHtml} />
@@ -17,10 +19,15 @@ const s = site.signup;
         <a class="btn btn-primary" href={`mailto:${s.fallbackEmail}?subject=Add%20me%20to%20the%20list`}>Email {s.fallbackEmail}</a>
       </div>
     )}
+    <div class="box" data-reveal><Mailbox /></div>
+    </div>
   </div>
 </section>
 
 <style>
-  .embed, .placeholder { margin-top: var(--s-6); max-width: var(--prose); }
+  .row { display: grid; gap: var(--s-8); align-items: end; margin-top: var(--s-6); }
+  .embed, .placeholder { max-width: var(--prose); }
   .placeholder { display: grid; gap: var(--s-3); justify-items: start; }
+  .box { justify-self: center; width: min(100%, 11rem); }
+  @media (min-width: 720px) { .row { grid-template-columns: minmax(0, 1fr) auto; } .box { justify-self: end; margin-right: var(--s-8); } }
 </style>

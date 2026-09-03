@@ -1,37 +1,44 @@
 ---
-// A strip of fence with animals that walk left as you scroll past (speed in px over the strip's full pass).
+// A strip of the farm between sections: grass, a fence, animals that walk left as you scroll past,
+// and a few fireflies. `speed` = how far (px) an animal travels while the strip crosses the screen.
 import Animal from "./art/Animal.astro";
-type Kind = "dog" | "cow" | "chicken" | "pig";
-interface Props { id: string; animals: { kind: Kind; x: string; h: string; speed: number }[] }
-const { id, animals } = Astro.props;
+import Grass from "./art/Grass.astro";
+import Fireflies from "./art/Fireflies.astro";
+type Kind = "dog" | "cow" | "rooster" | "pig" | "sheep";
+interface Props { id: string; animals: { kind: Kind; x: string; h: string; speed: number }[]; flies?: number }
+const { id, animals, flies = 5 } = Astro.props;
 const pid = `fence-${id}`;
 ---
 <div class="pasture" data-scroll aria-hidden="true">
+  <Fireflies count={flies} seed={id.length * 7 + 3} />
   {animals.map((a) => (
     <div class="animal" style={`--x:${a.x}; --h:${a.h}; --speed:${a.speed};`}>
       <Animal kind={a.kind} />
     </div>
   ))}
-  <svg class="fence" width="100%" height="64" focusable="false">
+  <svg class="fence" width="100%" height="72" focusable="false">
     <defs>
-      <pattern id={pid} width="150" height="64" patternUnits="userSpaceOnUse">
-        <rect x="0" y="6" width="10" height="58" rx="1" fill="var(--wood)" />
-        <path d="M0 6 L 5 0 L 10 6 Z" fill="var(--wood)" />
-        <rect x="0" y="18" width="150" height="6" fill="var(--wood-2)" />
-        <rect x="0" y="38" width="150" height="6" fill="var(--wood-2)" />
+      <pattern id={pid} width="150" height="72" patternUnits="userSpaceOnUse">
+        <rect x="0" y="8" width="11" height="64" rx="1" fill="var(--wood)" />
+        <path d="M0 8 L 5.5 1 L 11 8 Z" fill="var(--wood)" />
+        <rect x="0" y="22" width="150" height="7" fill="var(--wood-2)" />
+        <rect x="0" y="44" width="150" height="7" fill="var(--wood-2)" />
       </pattern>
     </defs>
-    <rect width="100%" height="64" fill={`url(#${pid})`} />
+    <rect width="100%" height="72" fill={`url(#${pid})`} />
   </svg>
+  <div class="ground"><Grass id={id} height={22} /></div>
 </div>
 
 <style>
-  .pasture { position: relative; height: 9.5rem; overflow: hidden; }
-  .fence { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; }
-  .animal { position: absolute; bottom: 0.35rem; left: var(--x); height: var(--h); color: var(--muted); opacity: 0.55; }
+  .pasture { position: relative; height: 12rem; overflow: hidden; }
+  .fence { position: absolute; left: 0; right: 0; bottom: 1.4rem; width: 100%; }
+  .ground { position: absolute; left: 0; right: 0; bottom: 0; height: 1.4rem; background: var(--ground); border-top: 2px solid var(--grass); }
+  .ground :global(.grass) { position: absolute; left: 0; right: 0; bottom: 100%; }
+  .animal { position: absolute; bottom: 1.5rem; left: var(--x); height: var(--h); color: var(--muted); opacity: 0.85; }
   .animal :global(svg) { height: 100%; width: auto; }
   @media (prefers-reduced-motion: no-preference) {
     .animal { transform: translateX(calc((var(--p, 0.5) - 0.5) * var(--speed) * -1px)); }
   }
-  @media (max-width: 640px) { .pasture { height: 7.5rem; } .animal { height: calc(var(--h) * 0.72); } }
+  @media (max-width: 640px) { .pasture { height: 9.5rem; } .animal { height: calc(var(--h) * 0.7); } }
 </style>

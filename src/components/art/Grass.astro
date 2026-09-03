@@ -1,0 +1,28 @@
+---
+// A row of grass blades along a ground line. Sways gently when motion is allowed.
+interface Props { id: string; height?: number }
+const { id, height = 26 } = Astro.props;
+const pid = `grass-${id}`;
+---
+<svg class="grass" width="100%" height={height} aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id={pid} width="64" height={height} patternUnits="userSpaceOnUse">
+      <g fill="var(--grass)">
+        <path d={`M4 ${height} C 5 ${height - 10} 2 ${height - 16} 7 ${height - 22} C 8 ${height - 14} 9 ${height - 8} 8 ${height} Z`} />
+        <path d={`M16 ${height} C 14 ${height - 8} 18 ${height - 14} 22 ${height - 18} C 20 ${height - 12} 21 ${height - 6} 20 ${height} Z`} />
+        <path d={`M30 ${height} C 32 ${height - 12} 28 ${height - 20} 34 ${height - 26} C 36 ${height - 16} 36 ${height - 8} 34 ${height} Z`} />
+        <path d={`M44 ${height} C 42 ${height - 6} 46 ${height - 10} 48 ${height - 14} C 48 ${height - 8} 49 ${height - 4} 48 ${height} Z`} />
+        <path d={`M55 ${height} C 57 ${height - 10} 54 ${height - 15} 60 ${height - 20} C 60 ${height - 12} 61 ${height - 6} 59 ${height} Z`} />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height={height} fill={`url(#${pid})`} />
+</svg>
+
+<style>
+  .grass { display: block; transform-origin: bottom center; }
+  @media (prefers-reduced-motion: no-preference) {
+    .grass { animation: sway 6s ease-in-out infinite alternate; }
+    @keyframes sway { from { transform: skewX(-3deg); } to { transform: skewX(3deg); } }
+  }
+</style>
