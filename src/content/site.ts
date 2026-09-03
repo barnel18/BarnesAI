@@ -74,7 +74,7 @@ export const site = {
   projects: {
     heading: "What I've built so far",
     blurb:
-      "All of it with Claude, starting from zero coding background in summer 2026. Statuses are honest. Most of the code is private for now — ask and I'll walk you through any of it.",
+      "All of it with Claude, starting from zero coding background in summer 2026. Statuses are honest. The code is on GitHub unless it holds client data.",
     items: [
       {
         name: "Business growth-audit pipeline",
@@ -92,7 +92,7 @@ export const site = {
         blurb:
           "A draft-day decision engine. Pulls projections and ADP from Sleeper, ESPN, and FantasyFootballCalculator, scores every player under the league's exact rules (matched Sleeper's published points 551 for 551), ranks by value over replacement, then runs thousands of simulated drafts to estimate who survives to my next pick. Terminal console plus a browser board that agree on 112 of 112 test states. Day one it caught a real edge: a suspended RB still priced as a third-round pick.",
         stack: ["Python", "numpy / pandas", "Monte Carlo sim", "Sleeper + ESPN APIs"],
-        links: [{ label: "Private — walkthrough on request", href: "" }],
+        links: [{ label: "Code on GitHub", href: "https://github.com/barnel18/fantasy-draft-engine" }],
       },
       {
         name: "School Hub",
@@ -101,7 +101,7 @@ export const site = {
         blurb:
           "Canvas → Notion → Claude. A Python tool (standard library only) pulls every assignment, exam, event, grade, announcement, and file for five courses into a local cache and mirrors it into Notion databases without overwriting what I've marked done. Seven custom Claude Code skills on top: sync, week plan, study guide, flashcards, outline, exam prep, course setup. Unit-tested against fixture data.",
         stack: ["Python", "Canvas API", "Notion API", "Claude Code skills"],
-        links: [{ label: "Private — walkthrough on request", href: "" }],
+        links: [{ label: "Code on GitHub", href: "https://github.com/barnel18/school-hub" }],
       },
       {
         name: "Food Dealz",
@@ -110,7 +110,7 @@ export const site = {
         blurb:
           "Every current food deal near you, restaurants and grocery, compared at the item level: the cheapest pizza slice or pound of ground beef within reach. Launch market is Madison. Next.js 16 on Supabase (Postgres + PostGIS, row-level security), a canonical item taxonomy, and Claude structured extraction with a hard rule that every price must appear verbatim in the captured text. Schema, migrations, and taxonomy are done; scrapers are next.",
         stack: ["Next.js 16", "TypeScript", "Supabase / PostGIS", "Claude API"],
-        links: [{ label: "In progress — private", href: "" }],
+        links: [{ label: "Code on GitHub", href: "https://github.com/barnel18/food-dealz" }],
       },
       {
         name: "This website",
@@ -128,7 +128,7 @@ export const site = {
         blurb:
           "A Rubik's-cube learning app: interactive 3D cube in React + three.js, a move engine with unit tests, a verified layer-by-layer beginner solver, and a tiered algorithm curriculum that gets validated by script before any lesson ships.",
         stack: ["React", "TypeScript", "three.js", "Vitest"],
-        links: [{ label: "Demo soon", href: "" }],
+        links: [{ label: "Code on GitHub", href: "https://github.com/barnel18/cube-coach" }, { label: "Demo soon", href: "" }],
       },
       {
         name: "Claude Code workspace",
